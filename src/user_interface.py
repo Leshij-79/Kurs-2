@@ -55,3 +55,4 @@ def set_params():
         params['only_with_salary'] = True
     else:
         params['only_with_salary'] = False
+    return params
