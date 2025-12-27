@@ -23,14 +23,13 @@ class WorkingWithFile(ABC):
 
 class JSONWorker(WorkingWithFile):
 
-    def __init__(self):
-        self.pathfile = os.path.join(os.path.dirname(__file__), "../data", "vacancies.json")
+    def __init__(self, file_name = "vacancies.json"):
+        self.__pathfile = os.path.join(os.path.dirname(__file__), "../data", file_name)
 
 
     def read_vacancies(self):
-        # path_json_file = os.path.abspath(self.pathfile)
         try:
-            with open(self.pathfile, "r", encoding="utf-8") as json_file:
+            with open(self.__pathfile, "r", encoding="utf-8") as json_file:
                 data = json.loads(json.load(json_file))
         except FileNotFoundError:
             return []
@@ -43,11 +42,8 @@ class JSONWorker(WorkingWithFile):
 
 
     def add_vacancies(self, vacancies):
-        with open(self.pathfile, "w", encoding="utf-8") as json_file:
-            if type(vacancies) is list:
-                json.dump(json.dumps(vacancies, ensure_ascii=False), json_file, ensure_ascii=False)
-            else:
-                json.dump(vacancies, json_file, ensure_ascii=False)
+        with open(self.__pathfile, "w", encoding="utf-8") as json_file:
+            json.dump(vacancies, json_file, ensure_ascii=False, indent=4)
 
 
     def delete_vacancies(self, vacancies):
@@ -57,20 +53,20 @@ class JSONWorker(WorkingWithFile):
 class XLSXWorker(WorkingWithFile):
 
 
-    def __init__(self):
-        self.pathfile = os.path.join(os.path.dirname(__file__), "../data", "vacancies.xlsx")
+    def __init__(self, file_name = "vacancies.xlsx"):
+        self.__pathfile = os.path.join(os.path.dirname(__file__), "../data", file_name)
 
 
     def read_vacancies(self):
         try:
-            excel_data = pd.read_excel(self.pathfile)
+            excel_data = pd.read_excel(self.__pathfile)
             return excel_data.to_dict("records")
         except FileNotFoundError:
             return []
 
 
     def add_vacancies(self, vacancies):
-        with pd.ExcelWriter(self.pathfile) as writer:
+        with pd.ExcelWriter(self.__pathfile) as writer:
             df = pd.DataFrame(vacancies)
             df.to_excel(writer, sheet_name="vacancies", index=False)
 

@@ -1,5 +1,3 @@
-import json
-
 from src.vacancies import Vacancy
 from src.work_file import JSONWorker, XLSXWorker
 
