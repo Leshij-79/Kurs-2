@@ -17,23 +17,24 @@ if __name__ == '__main__':
 
     list_of_vacancies = list_to_object_vacancies(hh_vacancies)
 
-    print('+' * 30)
-    for item in list_of_vacancies:
-        print(item)
+    # print('+' * 30)
+    # for item in list_of_vacancies:
+    #     print(item)
+    #
+    # print('-' * 30)
 
-    print('-' * 30)
     sorted_vacancies = sorted(list_of_vacancies, reverse=True)
-    for item in sorted_vacancies:
-        print(item)
+    # for item in sorted_vacancies:
+    #     print(item)
     list_of_vacancies = Vacancy.cast_to_object_list(list_of_vacancies)
-    print('#' * 30)
-    for item in list_of_vacancies:
-        print(item)
+    # print('#' * 30)
+    # for item in list_of_vacancies:
+    #     print(item)
 
     list_of_vacancies1 = Vacancy.cast_to_object_list(sorted_vacancies)
-    print('#' * 30)
-    for item in list_of_vacancies1:
-        print(item)
+    # print('#' * 30)
+    # for item in list_of_vacancies1:
+    #     print(item)
 
     write_json_file(list_of_vacancies)
     # Сохранение информации о вакансиях в файл

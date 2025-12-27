@@ -33,28 +33,26 @@ class JSONWorker(WorkingWithFile):
         # path_json_file = os.path.abspath(self.pathfile)
         try:
             with open(self.pathfile, "r", encoding="utf-8") as json_file:
-                data = json.load(json_file)
+                data = json.loads(json.load(json_file))
         except FileNotFoundError:
             return []
         except PermissionError:
             return []
 
-        if len(data) == 0 or type(data) is not dict:
+        if len(data) == 0 or type(data) is not list:
             return []
         else:
             return data
 
     def add_vacancies(self, vacancies):
-        try:
-            with open(self.pathfile, "a", encoding="utf-8") as json_file:
-                json.dump(vacancies, json_file)
+        with open(self.pathfile, "w", encoding="utf-8") as json_file:
+            if type(vacancies) is list:
+                json.dump(json.dumps(vacancies, ensure_ascii=False), json_file, ensure_ascii=False)
+            else:
+                json.dump(vacancies, json_file, ensure_ascii=False)
 
-                print('!!!!!TUTA!!!!!')
 
-        except FileNotFoundError:
-            with open(self.pathfile, "w", encoding="utf-8") as json_file:
-                vacancies.to_json(json_file, force_ascii=False)
-                print('!!!!!SDESYA!!!!!')
+
                 # json.dump(vacancies, json_file, ensure_ascii=False)
 
 

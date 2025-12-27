@@ -69,6 +69,7 @@ class Vacancy():
 
 
     # def cast_to_object_list(self, vacancies):
+    @staticmethod
     def cast_to_object_list(vacancies):
         list_of_vacancies = []
         for item in vacancies:

@@ -73,7 +73,7 @@ if __name__ == '__main__':
     hh1 = HeadHunterAPI()
     vak = hh1.processing_vacancies(keyword = 'Программист', search_field = 'name', period = 14, salary = 100000,
                                    area = '3', only_with_salary = True)
-    if len(vak) == 0:
-        print('Список пуст')
-    for item in vak:
-        print(item)
+    # if len(vak) == 0:
+    #     print('Список пуст')
+    # for item in vak:
+    #     print(item)
