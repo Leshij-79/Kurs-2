@@ -3,12 +3,10 @@ import os
 from abc import ABC, abstractmethod
 from unittest import result
 
+import pandas as pd
+
 
 class WorkingWithFile(ABC):
-
-    @abstractmethod
-    def __init__(self, pathfile):
-        pass
 
     @abstractmethod
     def read_vacancies(self):
@@ -38,11 +36,11 @@ class JSONWorker(WorkingWithFile):
             return []
         except PermissionError:
             return []
-
-        if len(data) == 0 or type(data) is not list:
+        except TypeError:
             return []
-        else:
-            return data
+
+        return data
+
 
     def add_vacancies(self, vacancies):
         with open(self.pathfile, "w", encoding="utf-8") as json_file:
@@ -52,16 +50,30 @@ class JSONWorker(WorkingWithFile):
                 json.dump(vacancies, json_file, ensure_ascii=False)
 
 
-
-                # json.dump(vacancies, json_file, ensure_ascii=False)
-
-
+    def delete_vacancies(self, vacancies):
+        pass
 
 
+class XLSXWorker(WorkingWithFile):
 
 
-        # result = vacancies.dumps()
-        # result.to_json(self.pathfile, force_ascii=False)
+    def __init__(self):
+        self.pathfile = os.path.join(os.path.dirname(__file__), "../data", "vacancies.xlsx")
+
+
+    def read_vacancies(self):
+        try:
+            excel_data = pd.read_excel(self.pathfile)
+            return excel_data.to_dict("records")
+        except FileNotFoundError:
+            return []
+
+
+    def add_vacancies(self, vacancies):
+        with pd.ExcelWriter(self.pathfile) as writer:
+            df = pd.DataFrame(vacancies)
+            df.to_excel(writer, sheet_name="vacancies", index=False)
+
 
     def delete_vacancies(self, vacancies):
         pass

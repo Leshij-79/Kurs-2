@@ -80,7 +80,7 @@ class Vacancy():
             temp_dict['salary_from'] = item.salary_from
             temp_dict['salary_to'] = item.salary_to
             temp_dict['alternate_url'] = item.alternate_url
-            temp_dict['snippet'] = item.snippet
+            temp_dict['snippet'] = item.snippet.replace('<highlighttext>','').replace('</highlighttext>','')
             temp_dict['work_format'] = item.work_format
             list_of_vacancies.append(temp_dict)
         return list_of_vacancies
