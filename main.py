@@ -1,7 +1,8 @@
 # Создание экземпляра класса для работы с API сайтов с вакансиями
 from src.hh import HeadHunterAPI
-from src.utils import list_to_object_vacancies
+from src.utils import list_to_object_vacancies, write_json_file
 from src.vacancies import Vacancy
+from src.work_file import JSONWorker
 
 if __name__ == '__main__':
     # user_interaction()
@@ -21,7 +22,6 @@ if __name__ == '__main__':
         print(item)
 
     print('-' * 30)
-    # sorted_vacancies = sorted(list_of_vacancies, key=lambda item: item.salary, reverse=True)
     sorted_vacancies = sorted(list_of_vacancies, reverse=True)
     for item in sorted_vacancies:
         print(item)
@@ -34,9 +34,13 @@ if __name__ == '__main__':
     print('#' * 30)
     for item in list_of_vacancies1:
         print(item)
+
+    write_json_file(list_of_vacancies)
     # Сохранение информации о вакансиях в файл
     # json_saver = JSONSaver()
     # json_saver.add_vacancy(vacancy)
     # json_saver.delete_vacancy(vacancy)
+
+
 
 
