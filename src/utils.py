@@ -8,6 +8,8 @@ def list_to_object_vacancies(vacancies):
         # print('=' * 30)
         # for key, value in vacancy_.items():
         #     print(f'{key} === {value}')
+        if vacancy_['salary'] is None:
+            vacancy_['salary'] = {'from': None, 'to': None, 'currency': 'RUR', 'gross': False}
         list_of_vacancies.append(Vacancy(vacancy_['id'], vacancy_['name'], vacancy_['area'], vacancy_['salary'],
                                          vacancy_['alternate_url'], vacancy_['snippet'], vacancy_['work_format']))
     return list_of_vacancies
