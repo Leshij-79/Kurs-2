@@ -30,7 +30,7 @@ class JSONWorker(WorkingWithFile):
     def read_vacancies(self):
         try:
             with open(self.__pathfile, "r", encoding="utf-8") as json_file:
-                data = json.loads(json.load(json_file))
+                data = json.load(json_file)
         except FileNotFoundError:
             return []
         except PermissionError:

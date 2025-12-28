@@ -95,3 +95,21 @@ def fixture_return_API_processing_vacancies() -> dict:
          'internship': False, 'adv_response_url': None, 'is_adv_vacancy': False, 'adv_context': None}
     ]
     }
+
+
+@pytest.fixture
+def fixture_json_file() -> list:
+    return [
+        {
+            "id": "128754739",
+            "name": "Python Developer / Backend (парсеры)",
+            "area": "Екатеринбург", "salary_from": 60000,
+            "salary_to": 160000,
+            "alternate_url": "https://hh.ru/vacancy/128754739",
+            "snippet": "Опыт работы с парсерами на Python от 1 года. Знание Playwright, selenium, Httpx, requests и "
+                       "подобные. Rabbit / redis приветствуются.  Разработка Backend микросервисов и сервисов. "
+                       "Проектирование новых сервисов, участие в разработке очень масштабной внутренней "
+                       "инфраструктуры проектов. Поддержка существующих сервисов и...",
+            "work_format": "Не определён"
+        }
+    ]

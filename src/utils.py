@@ -21,6 +21,9 @@ def write_json_file(vacancies):
     if read_data == []:
         json_file.add_vacancies(vacancies)
         return
+    print('!0' * 30)
+    print(read_data)
+    print('!0' * 30)
     read_data_ = data_generation(read_data, vacancies)
     json_file.add_vacancies(read_data_)
     return
