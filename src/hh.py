@@ -59,7 +59,7 @@ class HeadHunterAPI(AbstraktHH):
         self.__params['per_page'] = 10
         self.__params['only_with_salary'] = only_with_salary
         self.__params['currency'] = 'RUR'
-        while self.__params.get('page') != 2:
+        while self.__params.get('page') != 1:
             response = self._AbstraktHH__load_vacancies()
             if response == []:
                 return self.__vacancies
@@ -71,9 +71,9 @@ class HeadHunterAPI(AbstraktHH):
 
 # if __name__ == '__main__':
 #     hh1 = HeadHunterAPI()
-#     vak = hh1.processing_vacancies(keyword = 'Программист', search_field = 'name', period = 14, salary = 100000,
+#     vak = hh1.processing_vacancies(keyword = 'Python', search_field = 'name', period = 14, salary = 100000,
 #                                    area = '3', only_with_salary = True)
-    # if len(vak) == 0:
-    #     print('Список пуст')
-    # for item in vak:
-    #     print(item)
+#     if len(vak) == 0:
+#         print('Список пуст')
+#     for item in vak:
+#         print(item)

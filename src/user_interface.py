@@ -5,7 +5,7 @@ from src.vacancies import Vacancy
 
 def user_interface():
     hh1 = HeadHunterAPI()
-    params = set_params()
+    params, top_vacancies = set_params()
     hh_vacancies = hh1.processing_vacancies(**params)
 
 
@@ -21,14 +21,14 @@ def user_interface():
     # print('-' * 30)
 
     sorted_vacancies = sorted(list_of_vacancies, reverse=True)
-    for item in sorted_vacancies[:5]:
+    for item in sorted_vacancies[:top_vacancies]:
         print(item)
     list_of_vacancies = Vacancy.cast_to_object_list(list_of_vacancies)
     # print('#' * 30)
     # for item in list_of_vacancies:
     #     print(item)
 
-    list_of_vacancies1 = Vacancy.cast_to_object_list(sorted_vacancies)
+    # list_of_vacancies1 = Vacancy.cast_to_object_list(sorted_vacancies)
     # print('#' * 30)
     # for item in list_of_vacancies1:
     #     print(item)
@@ -37,7 +37,7 @@ def user_interface():
     write_excel_file(list_of_vacancies)
 
 def set_params():
-    params = {'search_field': 'name'}
+    params = {'search_field': 'name', 'only_with_salary': False}
     keyword = input("Введите строку поиска: ")
     if keyword:
         params['keyword'] = keyword
@@ -47,12 +47,14 @@ def set_params():
     salary = input("Введите предполагаемую зарплату (0/Enter - выводить все вакансии): ")
     if salary and salary.isdigit() and int(salary) > 0:
         params['salary'] = int(salary)
+        params['only_with_salary'] = True
     area = input("Введите код региона поиска: ")
     if area and area.isdigit() and int(area) > 0:
         params['area'] = area
-    only_with_salary = input("Показывать только с зарплатами (Д/н): ")
-    if only_with_salary == "Д" or only_with_salary == "д":
-        params['only_with_salary'] = True
+    top_vacancies_ = input("Введите количество вакансий ТОП по зарплате для вывода на экран (по-умолчанию 5): ")
+    if top_vacancies_ and top_vacancies_.isdigit() and int(top_vacancies_) > 0:
+        top_vacancies = int(top_vacancies_)
     else:
-        params['only_with_salary'] = False
-    return params
+        top_vacancies = 5
+
+    return params, top_vacancies
