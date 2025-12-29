@@ -1,8 +1,6 @@
-from unittest.mock import patch, Mock
-
+from unittest.mock import Mock, patch
 
 from src.hh import HeadHunterAPI
-from tests.conftest import fixture_return_API
 
 
 class MockResponse:
@@ -55,7 +53,9 @@ def test__AbstraktHH__load_vacancies_erros_connect(mock_requests_get) -> None:
 
 
 @patch("src.hh.HeadHunterAPI._AbstraktHH__load_vacancies")
-def test_processing_vacancies(mock_load_vacancies, fixture_return_API, fixture_return_API_processing_vacancies) -> None:
+def test_processing_vacancies(
+    mock_load_vacancies, fixture_return_API, fixture_return_API_processing_vacancies
+) -> None:
     """
     Тест метода обработки вакансий при наличии API-ответа
     """

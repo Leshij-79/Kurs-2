@@ -2,7 +2,6 @@ import json
 import os
 from abc import ABC, abstractmethod
 
-
 import pandas as pd
 
 
@@ -33,7 +32,6 @@ class JSONWorker(WorkingWithFile):
         """
         self.__pathfile = os.path.join(os.path.dirname(__file__), "../data", file_name)
 
-
     def read_vacancies(self) -> list[dict]:
         """
         Метод чтения данных из файла
@@ -51,7 +49,6 @@ class JSONWorker(WorkingWithFile):
 
         return data
 
-
     def add_vacancies(self, vacancies: list[dict]) -> None:
         """
         Метод записи данных в файл
@@ -59,7 +56,6 @@ class JSONWorker(WorkingWithFile):
         """
         with open(self.__pathfile, "w", encoding="utf-8") as json_file:
             json.dump(vacancies, json_file, ensure_ascii=False, indent=4)
-
 
     def delete_vacancies(self, vacancies: list[dict]) -> None:
         """
@@ -81,7 +77,6 @@ class XLSXWorker(WorkingWithFile):
         """
         self.__pathfile = os.path.join(os.path.dirname(__file__), "../data", file_name)
 
-
     def read_vacancies(self) -> list[dict]:
         """
         Метод чтения данных из файла
@@ -93,7 +88,6 @@ class XLSXWorker(WorkingWithFile):
         except FileNotFoundError:
             return []
 
-
     def add_vacancies(self, vacancies: list[dict]) -> None:
         """
         Метод записи данных в файл
@@ -102,7 +96,6 @@ class XLSXWorker(WorkingWithFile):
         with pd.ExcelWriter(self.__pathfile) as writer:
             df = pd.DataFrame(vacancies)
             df.to_excel(writer, sheet_name="vacancies", index=False)
-
 
     def delete_vacancies(self, vacancies: list[dict]) -> None:
         """

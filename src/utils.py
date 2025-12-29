@@ -10,10 +10,19 @@ def list_to_object_vacancies(vacancies: list[dict]) -> list[Vacancy]:
     """
     list_of_vacancies = []
     for vacancy_ in vacancies:
-        if vacancy_['salary'] is None:
-            vacancy_['salary'] = {'from': None, 'to': None, 'currency': 'RUR', 'gross': False}
-        list_of_vacancies.append(Vacancy(vacancy_['id'], vacancy_['name'], vacancy_['area'], vacancy_['salary'],
-                                         vacancy_['alternate_url'], vacancy_['snippet'], vacancy_['work_format']))
+        if vacancy_["salary"] is None:
+            vacancy_["salary"] = {"from": None, "to": None, "currency": "RUR", "gross": False}
+        list_of_vacancies.append(
+            Vacancy(
+                vacancy_["id"],
+                vacancy_["name"],
+                vacancy_["area"],
+                vacancy_["salary"],
+                vacancy_["alternate_url"],
+                vacancy_["snippet"],
+                vacancy_["work_format"],
+            )
+        )
     return list_of_vacancies
 
 
@@ -55,13 +64,13 @@ def data_generation(read_data: list[dict], vacancies: list[dict]) -> list[dict]:
     """
     temp_read_id = []
     for vacancy in read_data:
-        if type(vacancy['id']) is not str:
-            vacancy['id'] = str(vacancy['id'])
-        temp_read_id.append(vacancy['id'])
+        if type(vacancy["id"]) is not str:
+            vacancy["id"] = str(vacancy["id"])
+        temp_read_id.append(vacancy["id"])
     for vacancy in vacancies:
-        if type(vacancy['id']) is not str:
-            vacancy['id'] = str(vacancy['id'])
-        if vacancy['id'] in temp_read_id:
+        if type(vacancy["id"]) is not str:
+            vacancy["id"] = str(vacancy["id"])
+        if vacancy["id"] in temp_read_id:
             continue
         else:
             read_data.append(vacancy)
