@@ -68,7 +68,6 @@ class Vacancy():
                 f'Описание/требования по вакансии - {self.snippet}, Формат работы - {self.work_format}')
 
 
-    # def cast_to_object_list(self, vacancies):
     @staticmethod
     def cast_to_object_list(vacancies):
         list_of_vacancies = []
@@ -84,6 +83,3 @@ class Vacancy():
             temp_dict['work_format'] = item.work_format
             list_of_vacancies.append(temp_dict)
         return list_of_vacancies
-
-
-

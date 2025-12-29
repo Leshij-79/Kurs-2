@@ -41,8 +41,6 @@ class HeadHunterAPI(AbstraktHH):
             return []
 
 
-
-
     def processing_vacancies(self, keyword: str = '', search_field: str = '', area: str = '', period: int = 0,
                        salary: int = 0, only_with_salary: bool = False):
         if keyword != '':
@@ -67,13 +65,3 @@ class HeadHunterAPI(AbstraktHH):
             self.__vacancies.extend(vacancies)
             self.__params['page'] += 1
         return self.__vacancies
-
-
-# if __name__ == '__main__':
-#     hh1 = HeadHunterAPI()
-#     vak = hh1.processing_vacancies(keyword = 'Python', search_field = 'name', period = 14, salary = 100000,
-#                                    area = '3', only_with_salary = True)
-#     if len(vak) == 0:
-#         print('Список пуст')
-#     for item in vak:
-#         print(item)

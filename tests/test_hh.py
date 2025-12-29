@@ -1,8 +1,6 @@
 from unittest.mock import patch, Mock
 
-import pytest
 
-from src import hh
 from src.hh import HeadHunterAPI
 from tests.conftest import fixture_return_API
 

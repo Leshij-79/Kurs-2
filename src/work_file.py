@@ -1,7 +1,7 @@
 import json
 import os
 from abc import ABC, abstractmethod
-from unittest import result
+
 
 import pandas as pd
 
@@ -73,4 +73,3 @@ class XLSXWorker(WorkingWithFile):
 
     def delete_vacancies(self, vacancies):
         pass
-
