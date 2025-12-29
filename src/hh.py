@@ -22,13 +22,21 @@ class HeadHunterAPI(AbstraktHH):
     """
 
     def __init__(self):
+        """
+        Инициализация класса HeadHunterAPI
+        """
         self.__url = 'https://api.hh.ru/vacancies'
         self.__headers = {'User-Agent': 'HH-User-Agent'}
         self.__params = {}
         self.__vacancies = []
 
 
-    def _AbstraktHH__load_vacancies(self):
+    def _AbstraktHH__load_vacancies(self) -> list:
+        """
+        Метод запроса вакансий с портала hh.ru в соотвествии с настройками пользователя
+        Реализация приватного абстрактного метода
+        :return: Список словарей с вакансиями
+        """
         try:
             response = requests.get(self.__url, headers=self.__headers, params=self.__params)
         except Exception as e:
@@ -42,7 +50,17 @@ class HeadHunterAPI(AbstraktHH):
 
 
     def processing_vacancies(self, keyword: str = '', search_field: str = '', area: str = '', period: int = 0,
-                       salary: int = 0, only_with_salary: bool = False):
+                       salary: int = 0, only_with_salary: bool = False) -> list:
+        """
+        Метод формирования и обработки полученного ответа на запрос по вакансим с портала hh.ru
+        :param keyword: Ключевое слово для поиска
+        :param search_field: Поле по которому производится поиск
+        :param area: Регион поиска
+        :param period: Количество дней отбора
+        :param salary: Предполагаемая заработная плата
+        :param only_with_salary: Вывод вакансий в которых указана заработная плата
+        :return: Список словарей с вакансиями
+        """
         if keyword != '':
             self.__params['text'] = keyword
         if search_field != '':

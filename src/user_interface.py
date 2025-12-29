@@ -3,7 +3,10 @@ from src.utils import list_to_object_vacancies, write_json_file, write_excel_fil
 from src.vacancies import Vacancy
 
 
-def user_interface():
+def user_interface() -> None:
+    """
+    Функция пользовательского интерфейса
+    """
     hh1 = HeadHunterAPI()
     params, top_vacancies = set_params()
     hh_vacancies = hh1.processing_vacancies(**params)
@@ -22,7 +25,11 @@ def user_interface():
     write_json_file(list_of_vacancies)
     write_excel_file(list_of_vacancies)
 
-def set_params():
+def set_params() -> dict | int:
+    """
+    Функция инетерактива пользовательского интерфейса для формирования параметров запроса
+    :return: Словарь с параметрами запроса, количество вакансий для отбора в ТОП
+    """
     params = {'search_field': 'name', 'only_with_salary': False}
     keyword = input("Введите строку поиска: ")
     if keyword:

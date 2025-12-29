@@ -1,8 +1,22 @@
 class Vacancy():
+    """
+    Класс вакансий
+    """
     __slots__ = ('id', 'name', 'area', 'salary_from', 'salary_to', 'alternate_url', 'snippet', 'work_format')
 
 
-    def __init__(self, id, name, area, salary, alternate_url, snippet, work_format):
+    def __init__(self, id: str, name: str, area: str, salary: dict, alternate_url: str, snippet: dict,
+                 work_format: list):
+        """
+        Инициализация класса вакансий
+        :param id: ID вакансии
+        :param name: Наименование вакансии
+        :param area: Регион вакансии
+        :param salary: Заработная плата по вакансии
+        :param alternate_url: URL вакансии
+        :param snippet: Описание вакансии
+        :param work_format: Формат работы по вакансии
+        """
         self.id = id
         self.name = name
         self.area = area['name']
@@ -13,25 +27,46 @@ class Vacancy():
         self.work_format = self.__work_format(work_format)
 
 
-    def __salary_from(self, salary):
+    def __salary_from(self, salary: dict) -> int:
+        """
+        Приватный метод обработки заработной платы от
+        :param salary: Заработная плата в формате словаря
+        :return: Заработная плата в формате целого числа
+        """
         if salary['from']:
             return salary['from']
         else:
             return 0
 
 
-    def __salary_to(self, salary):
+    def __salary_to(self, salary: dict) -> int:
+        """
+        Приватный метод обработки заработной платы от
+        :param salary: Заработная плата в формате словаря
+        :return: Заработная плата в формате целого числа
+        """
         if salary['to']:
             return salary['to']
         else:
             return 9999999
 
 
-    def __snippet(self, snippet):
+    def __snippet(self, snippet: dict) -> str:
+        """
+        Формирование Описания вакансии
+        :param snippet: Описание вакансии в формате словаря
+        :return: Описание вкансии в формате строки
+        """
+
         return f'{snippet['requirement']} {snippet['responsibility']}'
 
 
-    def __work_format(self, work_format):
+    def __work_format(self, work_format: list[dict]) -> str:
+        """
+        Формирование формата работы по вакансии
+        :param work_format: Формат работы по вакансии в формате список словарей
+        :return: Формат работы по вакансии в формате строки
+        """
         if work_format == []:
             return 'Не определён'
         else:
@@ -63,13 +98,22 @@ class Vacancy():
 
 
     def __str__(self):
+        """
+        Формирование строки для печати объекта Vacancy
+        :return:
+        """
         return (f'ID вакансии - {self.id}, Вакансия - {self.name}, Территория - {self.area}, '
                 f'Зарплата - {self.salary_from}-{self.salary_to}, URL вакансии - {self.alternate_url}, '
                 f'Описание/требования по вакансии - {self.snippet}, Формат работы - {self.work_format}')
 
 
     @staticmethod
-    def cast_to_object_list(vacancies):
+    def cast_to_object_list(vacancies: list) -> list[dict]:
+        """
+        Формирование списка вакансий в формате список словарей из списка объектов Vacancy для записи в файл
+        :param vacancies: Список объектов Vacancy
+        :return: Вакансии в формате список словарей для записи в файл
+        """
         list_of_vacancies = []
         for item in vacancies:
             temp_dict = {}

@@ -99,6 +99,10 @@ def fixture_return_API_processing_vacancies() -> dict:
 
 @pytest.fixture
 def fixture_json_file() -> list:
+    """
+    Фикстура для json-файла
+    :return: Список словаря вакансии
+    """
     return [
         {
             "id": "128754739",
@@ -117,6 +121,10 @@ def fixture_json_file() -> list:
 
 @pytest.fixture
 def fixture_excel_file() -> list:
+    """
+    Фикстура для excel-файла
+    :return: Список словаря вакансии
+    """
     return [
         {
             "id": 128754739,

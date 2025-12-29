@@ -12,6 +12,9 @@ def test_list_to_object_vacancies(fixture_return_API) -> None:
 @patch("src.utils.JSONWorker.read_vacancies")
 @patch("src.utils.JSONWorker.add_vacancies")
 def test_write_json_file(mock_add_vacancies, mock_read_vacancies, fixture_json_file) -> None:
+    """
+    Тест записи в JSON-файл
+    """
     json_file = JSONWorker('test_vacancies.json')
     mock_read_vacancies.return_value = fixture_json_file
     write_json_file(fixture_json_file)
@@ -21,6 +24,9 @@ def test_write_json_file(mock_add_vacancies, mock_read_vacancies, fixture_json_f
 @patch("src.utils.JSONWorker.read_vacancies")
 @patch("src.utils.JSONWorker.add_vacancies")
 def test_write_json_file_no_data(mock_add_vacancies, mock_read_vacancies, fixture_json_file) -> None:
+    """
+    Тест записи в JSON-файл при отсутстии при отсутствии данных в файле
+    """
     json_file = JSONWorker('test_vacancies.json')
     mock_read_vacancies.return_value = []
     write_json_file(fixture_json_file)
@@ -29,6 +35,9 @@ def test_write_json_file_no_data(mock_add_vacancies, mock_read_vacancies, fixtur
 
 @patch("src.utils.XLSXWorker.read_vacancies")
 def test_write_excel_file(mock_read_vacancies, fixture_excel_file) -> None:
+    """
+    Тест записи в EXCEL-файл
+    """
     excel_file = XLSXWorker('test_vacancies.xlsx')
     mock_read_vacancies.return_value = fixture_excel_file
     write_excel_file(fixture_excel_file)
@@ -39,6 +48,9 @@ def test_write_excel_file(mock_read_vacancies, fixture_excel_file) -> None:
 @patch("src.utils.XLSXWorker.read_vacancies")
 @patch("src.utils.XLSXWorker.add_vacancies")
 def test_write_excel_file_no_data(mock_add_vacancies, mock_read_vacancies, fixture_excel_file) -> None:
+    """
+    Тест записи в EXCEL-файл при отсутсвии данных в файле
+    """
     excel_file = XLSXWorker('test_vacancies.xlsx')
     mock_read_vacancies.return_value = []
     write_excel_file(fixture_excel_file)
