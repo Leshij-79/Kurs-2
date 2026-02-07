@@ -14,7 +14,11 @@ def fixture_return_API() -> list:
             "department": None,
             "has_test": False,
             "response_letter_required": False,
-            "area": {"id": "3", "name": "Екатеринбург", "url": "https://api.hh.ru/areas/3"},
+            "area": {
+                "id": "3",
+                "name": "Екатеринбург",
+                "url": "https://api.hh.ru/areas/3",
+            },
             "salary": {"from": 60000, "to": 160000, "currency": "RUR", "gross": False},
             "salary_range": {
                 "from": 60000,
@@ -112,8 +116,17 @@ def fixture_return_API_processing_vacancies() -> dict:
                 "department": None,
                 "has_test": False,
                 "response_letter_required": False,
-                "area": {"id": "3", "name": "Екатеринбург", "url": "https://api.hh.ru/areas/3"},
-                "salary": {"from": 60000, "to": 160000, "currency": "RUR", "gross": False},
+                "area": {
+                    "id": "3",
+                    "name": "Екатеринбург",
+                    "url": "https://api.hh.ru/areas/3",
+                },
+                "salary": {
+                    "from": 60000,
+                    "to": 160000,
+                    "currency": "RUR",
+                    "gross": False,
+                },
                 "salary_range": {
                     "from": 60000,
                     "to": 160000,
@@ -183,7 +196,9 @@ def fixture_return_API_processing_vacancies() -> dict:
                 "working_hours": [{"id": "HOURS_8", "name": "8\xa0часов"}],
                 "work_schedule_by_days": [{"id": "FIVE_ON_TWO_OFF", "name": "5/2"}],
                 "night_shifts": False,
-                "professional_roles": [{"id": "96", "name": "Программист, разработчик"}],
+                "professional_roles": [
+                    {"id": "96", "name": "Программист, разработчик"}
+                ],
                 "accept_incomplete_resumes": False,
                 "experience": {"id": "between1And3", "name": "От 1 года до 3 лет"},
                 "employment": {"id": "full", "name": "Полная занятость"},

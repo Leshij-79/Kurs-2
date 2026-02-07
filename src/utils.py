@@ -11,7 +11,12 @@ def list_to_object_vacancies(vacancies: list[dict]) -> list[Vacancy]:
     list_of_vacancies = []
     for vacancy_ in vacancies:
         if vacancy_["salary"] is None:
-            vacancy_["salary"] = {"from": None, "to": None, "currency": "RUR", "gross": False}
+            vacancy_["salary"] = {
+                "from": None,
+                "to": None,
+                "currency": "RUR",
+                "gross": False,
+            }
         list_of_vacancies.append(
             Vacancy(
                 vacancy_["id"],

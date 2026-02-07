@@ -37,14 +37,18 @@ def set_params() -> dict | int:
     period = input("Введите количество дней, за которые необходим поиск: ")
     if period and period.isdigit() and int(period) > 0:
         params["period"] = int(period)
-    salary = input("Введите предполагаемую зарплату (0/Enter - выводить все вакансии): ")
+    salary = input(
+        "Введите предполагаемую зарплату (0/Enter - выводить все вакансии): "
+    )
     if salary and salary.isdigit() and int(salary) > 0:
         params["salary"] = int(salary)
         params["only_with_salary"] = True
     area = input("Введите код региона поиска: ")
     if area and area.isdigit() and int(area) > 0:
         params["area"] = area
-    top_vacancies_ = input("Введите количество вакансий ТОП по зарплате для вывода на экран (по-умолчанию 5): ")
+    top_vacancies_ = input(
+        "Введите количество вакансий ТОП по зарплате для вывода на экран (по-умолчанию 5): "
+    )
     if top_vacancies_ and top_vacancies_.isdigit() and int(top_vacancies_) > 0:
         top_vacancies = int(top_vacancies_)
     else:

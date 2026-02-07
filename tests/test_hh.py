@@ -60,7 +60,9 @@ def test_processing_vacancies(
     Тест метода обработки вакансий при наличии API-ответа
     """
     api_instance = HeadHunterAPI()
-    mock_load_vacancies.return_value = MockResponse(fixture_return_API_processing_vacancies)
+    mock_load_vacancies.return_value = MockResponse(
+        fixture_return_API_processing_vacancies
+    )
     assert api_instance.processing_vacancies() == fixture_return_API
 
 

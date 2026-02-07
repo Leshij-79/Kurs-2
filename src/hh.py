@@ -4,13 +4,14 @@ import requests
 
 
 class AbstraktHH(ABC):
-
     @abstractmethod
     def __load_vacancies(self):
         pass
 
     @abstractmethod
-    def processing_vacancies(self, keyword, search_field, area, period, salary, only_with_salary):
+    def processing_vacancies(
+        self, keyword, search_field, area, period, salary, only_with_salary
+    ):
         pass
 
 
@@ -35,7 +36,9 @@ class HeadHunterAPI(AbstraktHH):
         :return: Список словарей с вакансиями
         """
         try:
-            response = requests.get(self.__url, headers=self.__headers, params=self.__params)
+            response = requests.get(
+                self.__url, headers=self.__headers, params=self.__params
+            )
         except Exception as e:
             print(f"Проверьте соединение. Ошибка - {e}")
             return []

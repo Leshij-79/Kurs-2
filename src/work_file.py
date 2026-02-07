@@ -6,7 +6,6 @@ import pandas as pd
 
 
 class WorkingWithFile(ABC):
-
     @abstractmethod
     def read_vacancies(self):
         pass

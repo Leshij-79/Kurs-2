@@ -3,10 +3,26 @@ class Vacancy:
     Класс вакансий
     """
 
-    __slots__ = ("id", "name", "area", "salary_from", "salary_to", "alternate_url", "snippet", "work_format")
+    __slots__ = (
+        "id",
+        "name",
+        "area",
+        "salary_from",
+        "salary_to",
+        "alternate_url",
+        "snippet",
+        "work_format",
+    )
 
     def __init__(
-        self, id: str, name: str, area: str, salary: dict, alternate_url: str, snippet: dict, work_format: list
+        self,
+        id: str,
+        name: str,
+        area: str,
+        salary: dict,
+        alternate_url: str,
+        snippet: dict,
+        work_format: list,
     ):
         """
         Инициализация класса вакансий
@@ -70,22 +86,34 @@ class Vacancy:
             return work_format[0]["name"]
 
     def __lt__(self, other):
-        return (self.salary_from < other.salary_from) or (self.salary_to < other.salary_to)
+        return (self.salary_from < other.salary_from) or (
+            self.salary_to < other.salary_to
+        )
 
     def __gt__(self, other):
-        return (self.salary_from > other.salary_from) or (self.salary_to > other.salary_to)
+        return (self.salary_from > other.salary_from) or (
+            self.salary_to > other.salary_to
+        )
 
     def __eq__(self, other):
-        return (self.salary_from == other.salary_from) or (self.salary_to == other.salary_to)
+        return (self.salary_from == other.salary_from) or (
+            self.salary_to == other.salary_to
+        )
 
     def __ne__(self, other):
-        return (self.salary_from != other.salary_from) or (self.salary_to != other.salary_to)
+        return (self.salary_from != other.salary_from) or (
+            self.salary_to != other.salary_to
+        )
 
     def __le__(self, other):
-        return (self.salary_from <= other.salary_from) or (self.salary_to <= other.salary_to)
+        return (self.salary_from <= other.salary_from) or (
+            self.salary_to <= other.salary_to
+        )
 
     def __ge__(self, other):
-        return (self.salary_from >= other.salary_from) or (self.salary_to >= other.salary_to)
+        return (self.salary_from >= other.salary_from) or (
+            self.salary_to >= other.salary_to
+        )
 
     def __str__(self):
         """
@@ -114,7 +142,9 @@ class Vacancy:
             temp_dict["salary_from"] = item.salary_from
             temp_dict["salary_to"] = item.salary_to
             temp_dict["alternate_url"] = item.alternate_url
-            temp_dict["snippet"] = item.snippet.replace("<highlighttext>", "").replace("</highlighttext>", "")
+            temp_dict["snippet"] = item.snippet.replace("<highlighttext>", "").replace(
+                "</highlighttext>", ""
+            )
             temp_dict["work_format"] = item.work_format
             list_of_vacancies.append(temp_dict)
         return list_of_vacancies
